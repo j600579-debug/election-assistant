@@ -13,25 +13,30 @@
 <main class="container" role="main">
     <header>
         <h2>🗳️ Smart Election Assistant</h2>
-        <p>வாக்காளர் விழிப்புணர்வு மற்றும் உதவி மையம்</p>
+        <p>வாக்காளர் விழிப்புணர்வு மையம்</p>
     </header>
+
+    <div class="language-selector">
+        <button onclick="setLanguage('en')" id="btn-en" class="lang-btn active" aria-label="Set language to English">English</button>
+        <button onclick="setLanguage('ta')" id="btn-ta" class="lang-btn" aria-label="மொழியை தமிழுக்கு மாற்றவும்">தமிழ்</button>
+    </div>
 
     <section id="chatBox" role="log" aria-live="polite" aria-label="Chat conversation"></section>
 
     <div class="input-area">
         <input type="text" id="userInput" 
-               placeholder="தேர்தல் பற்றி கேளுங்கள்..." 
-               aria-label="Enter your question about voting"
+               placeholder="Ask about voting / தேர்தல் பற்றி கேளுங்கள்..." 
+               aria-label="User input"
                autocomplete="off">
         
         <div class="button-group">
-            <button onclick="sendMessage()" id="sendBtn" aria-label="Send message">அனுப்பு</button>
-            <button onclick="clearChat()" id="clearBtn" aria-label="Clear chat history">அழிக்க</button>
+            <button onclick="sendMessage()" id="sendBtn">Send / அனுப்பு</button>
+            <button onclick="clearChat()" id="clearBtn">Clear / அழி</button>
         </div>
     </div>
 
     <footer id="google-integration">
-        <small>Powered by Google Gemini AI & Firebase</small>
+        <small>Powered by Google Gemini AI & Firebase Simulation</small>
     </footer>
 </main>
 
