@@ -17,3 +17,5 @@ User types a question and the assistant gives answers based on keywords.
 - HTML
 - CSS
 - JavaScript
+## Demo
+Open index.html in browser to run the project.
