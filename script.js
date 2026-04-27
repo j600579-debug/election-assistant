@@ -1,20 +1,33 @@
+// 1. தேவையான உறுப்புகளைத் தேர்ந்தெடுத்தல்
 const chatBox = document.getElementById("chatBox");
 const userInputField = document.getElementById("userInput");
 const cache = new Map();
-let currentLang = 'en';
+let currentLang = 'en'; // ஆரம்ப மொழி ஆங்கிலம்
 
-// Accessibility: Language Toggle Logic
+/**
+ * 2. மொழிமாற்றச் செயல்பாடு (இதுதான் பட்டன் கிளிக் செய்யும்போது வேலை செய்யும்)
+ */
 function setLanguage(lang) {
+    console.log("Language changed to: " + lang); // இது சோதனையிட உதவும்
     currentLang = lang;
+
+    // பட்டன்களின் நிறத்தை மாற்றுதல் (Active class)
     document.getElementById('btn-en').classList.toggle('active', lang === 'en');
     document.getElementById('btn-ta').classList.toggle('active', lang === 'ta');
-    const systemMsg = lang === 'en' ? "Language: English" : "மொழி: தமிழ்";
+
+    // சிஸ்டம் மெசேஜ் மூலம் உறுதி செய்தல்
+    const systemMsg = lang === 'en' ? "Language set to English" : "மொழி தமிழுக்கு மாற்றப்பட்டது";
     appendMessage("System", systemMsg, "bot-msg");
 }
 
-// Allow Enter key
-userInputField.addEventListener("keypress", (e) => { if (e.key === "Enter") sendMessage(); });
+// Enter பட்டன் அழுத்தினால் மெசேஜ் அனுப்ப
+userInputField.addEventListener("keypress", (e) => { 
+    if (e.key === "Enter") sendMessage(); 
+});
 
+/**
+ * 3. மெசேஜ் அனுப்பும் செயல்பாடு
+ */
 function sendMessage() {
     const input = userInputField.value.trim();
     if (!input) return;
@@ -32,45 +45,33 @@ function appendMessage(sender, text, className) {
     chatBox.scrollTop = chatBox.scrollHeight;
 }
 
+/**
+ * 4. பதில்களை உருவாக்கும் பகுதி (Logic)
+ */
 async function processResponse(input) {
+    // Cache சோதனை
     if (cache.has(input + currentLang)) {
         appendMessage("Bot", cache.get(input + currentLang), "bot-msg");
         return;
     }
 
-    // Google Services / AI Simulation Logic
     const response = await getAIBotResponse(input);
     cache.set(input + currentLang, response);
     appendMessage("Bot", response, "bot-msg");
 }
 
 async function getAIBotResponse(query) {
+    // தேர்தல் தொடர்பான விரிவான பதில்கள்
     const data = {
-        "vote": { "en": "Step 1: Register at nvsp.in. Step 2: Get Voter ID. Step 3: Visit booth.", "ta": "படி 1: nvsp.in இல் பதிவு செய்யவும். படி 2: அடையாள அட்டை பெறவும். படி 3: வாக்குச்சாவடி செல்லவும்." },
-        "age": { "en": "Eligibility: 18 years or older.", "ta": "தகுதி: 18 வயது அல்லது அதற்கு மேற்பட்டவர்." },
-        "nota": { "en": "NOTA allows you to reject all candidates.", "ta": "வேட்பாளர்கள் எவரையும் பிடிக்கவில்லை எனில் 'நோட்டா' பயன்படுத்தலாம்." },
-        "id": { "en": "Required: Voter ID, Aadhaar, or Govt IDs.", "ta": "தேவை: வாக்காளர் அடையாள அட்டை அல்லது ஆதார்." },
-        "time": { "en": "Polling: 7 AM to 6 PM.", "ta": "நேரம்: காலை 7 மணி முதல் மாலை 6 மணி வரை." }
-    };
-
-    return new Promise((resolve) => {
-        setTimeout(() => {
-            const match = Object.keys(data).find(k => query.includes(k));
-            if (match) {
-                resolve(data[match][currentLang]);
-            } else {
-                resolve(currentLang === 'en' ? "I can help with vote, age, id, and nota." : "ஓட்டு, வயது, அடையாள அட்டை பற்றி நான் உதவ முடியும்.");
-            }
-        }, 500);
-    });
-}
-
-function clearChat() { chatBox.innerHTML = ""; cache.clear(); }
-
-// Professional Testing Suite (Score Booster)
-function runTests() {
-    console.log("System Test: Running...");
-    console.assert(typeof sendMessage === 'function', "UI Logic Error");
-    console.log("System Test: All functions initialized.");
-}
-runTests();
+        "vote": { 
+            "en": "Register at nvsp.in, get your Voter ID, and visit your booth on election day.", 
+            "ta": "nvsp.in இணையதளத்தில் பதிவு செய்து, அடையாள அட்டை பெற்று, தேர்தல் நாளன்று வாக்குச்சாவடிக்குச் செல்லவும்." 
+        },
+        "age": { 
+            "en": "You must be 18 years or older to vote.", 
+            "ta": "வாக்களிக்க உங்களுக்கு 18 வயது அல்லது அதற்கு மேல் இருக்க வேண்டும்." 
+        },
+        "nota": { 
+            "en": "NOTA (None of the Above) is an option to reject all candidates.", 
+            "
+                
