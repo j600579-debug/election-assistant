@@ -3,46 +3,50 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Voter Awareness Portal</title>
+    <title>Democracy Flow | Election Guide</title>
     <link rel="stylesheet" href="style.css">
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
 </head>
 <body>
 
-<div class="app-container">
-    <header class="navbar">
-        <div class="logo">VoterGuide AI</div>
-        <nav class="nav-menu">
-            <button class="nav-link active" onclick="showTab('chat')">AI Assistant</button>
-            <button class="nav-link" onclick="showTab('cards')">Flashcards</button>
-            <button class="nav-link" onclick="showTab('quiz')">Quiz</button>
-        </nav>
+<div class="main-wrapper">
+    <header class="hero">
+        <h1 class="gradient-text">Democracy Flow</h1>
+        <p>Interactive Guide to the Indian Election System</p>
     </header>
 
-    <main class="content">
-        <section id="chat" class="tab-content active">
-            <div class="panel">
-                <h2>Smart Voter Assistant</h2>
-                <div id="chatWindow" class="chat-window">
-                    <div class="bot-msg">வணக்கம்! ஓட்டுப் பதிவு அல்லது தேர்தல் விதிகள் பற்றி என்னிடம் கேளுங்கள்.</div>
-                </div>
-                <div class="input-area">
-                    <input type="text" id="userInput" placeholder="உங்கள் கேள்வியைத் தட்டச்சு செய்க...">
-                    <button onclick="askBot()">அனுப்பு</button>
-                </div>
+    <nav class="nav-tabs">
+        <button class="tab-btn active" onclick="openTab(event, 'chat')">Assistant</button>
+        <button class="tab-btn" onclick="openTab(event, 'cards')">Vocabulary</button>
+        <button class="tab-btn" onclick="openTab(event, 'quiz')">Quiz</button>
+    </nav>
+
+    <main class="content-body">
+        <section id="chat" class="tab-panel active">
+            <h2 class="section-title">Voter Assistant</h2>
+            <div id="chatBox" class="chat-display">
+                <p style="color: #8b949e;">Ask about EVM, Age, Voter ID, or NOTA...</p>
+            </div>
+            <div class="input-row">
+                <input type="text" id="userInput" placeholder="உங்கள் கேள்வியைத் தட்டச்சு செய்க...">
+                <button onclick="handleAI()" class="send-icon">➤</button>
             </div>
         </section>
 
-        <section id="cards" class="tab-content">
-            <h2>Election Terms (10)</h2>
-            <div class="grid" id="cardsGrid"></div>
+        <section id="cards" class="tab-panel">
+            <h2 class="section-title">Key Terms (Click to Flip)</h2>
+            <div class="cards-grid" id="flashGrid"></div>
         </section>
 
-        <section id="quiz" class="tab-content">
-            <h2>Test Your Knowledge (10)</h2>
-            <div id="quizContainer" class="panel"></div>
+        <section id="quiz" class="tab-panel">
+            <h2 class="section-title">Knowledge Check</h2>
+            <div id="quizList" class="quiz-container"></div>
         </section>
     </main>
+
+    <footer class="site-footer">
+        <p>© 2026 Democracy Flow Education. Built with High-Performance AI Logic.</p>
+    </footer>
 </div>
 
 <script src="script.js"></script>
