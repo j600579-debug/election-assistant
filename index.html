@@ -1,54 +1,49 @@
-<!DOCTYPE html>
-<html lang="ta">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Democracy Flow | Election Guide</title>
-    <link rel="stylesheet" href="style.css">
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
-</head>
-<body>
-
-<div class="main-wrapper">
-    <header class="hero">
-        <h1 class="gradient-text">Democracy Flow</h1>
-        <p>Interactive Guide to the Indian Election System</p>
-    </header>
-
-    <nav class="nav-tabs">
-        <button class="tab-btn active" onclick="openTab(event, 'chat')">Assistant</button>
-        <button class="tab-btn" onclick="openTab(event, 'cards')">Vocabulary</button>
-        <button class="tab-btn" onclick="openTab(event, 'quiz')">Quiz</button>
-    </nav>
-
-    <main class="content-body">
-        <section id="chat" class="tab-panel active">
-            <h2 class="section-title">Voter Assistant</h2>
-            <div id="chatBox" class="chat-display">
-                <p style="color: #8b949e;">Ask about EVM, Age, Voter ID, or NOTA...</p>
-            </div>
-            <div class="input-row">
-                <input type="text" id="userInput" placeholder="உங்கள் கேள்வியைத் தட்டச்சு செய்க...">
-                <button onclick="handleAI()" class="send-icon">➤</button>
-            </div>
-        </section>
-
-        <section id="cards" class="tab-panel">
-            <h2 class="section-title">Key Terms (Click to Flip)</h2>
-            <div class="cards-grid" id="flashGrid"></div>
-        </section>
-
-        <section id="quiz" class="tab-panel">
-            <h2 class="section-title">Knowledge Check</h2>
-            <div id="quizList" class="quiz-container"></div>
-        </section>
-    </main>
-
-    <footer class="site-footer">
-        <p>© 2026 Democracy Flow Education. Built with High-Performance AI Logic.</p>
-    </footer>
+<div class="card" onclick="flip(this)">
+  <span class="front">ECI</span>
+  <span class="back hidden">Election Commission of India conducts elections.</span>
 </div>
 
-<script src="script.js"></script>
-</body>
-</html>
+<div class="card" onclick="flip(this)">
+  <span class="front">EVM</span>
+  <span class="back hidden">Electronic Voting Machine used for voting.</span>
+</div>
+
+<div class="card" onclick="flip(this)">
+  <span class="front">VVPAT</span>
+  <span class="back hidden">Paper slip to verify vote.</span>
+</div>
+
+<div class="card" onclick="flip(this)">
+  <span class="front">NOTA</span>
+  <span class="back hidden">None Of The Above option.</span>
+</div>
+
+<div class="card" onclick="flip(this)">
+  <span class="front">MCC</span>
+  <span class="back hidden">Model Code of Conduct.</span>
+</div>
+
+<div class="card" onclick="flip(this)">
+  <span class="front">Polling Booth</span>
+  <span class="back hidden">Place where voting happens.</span>
+</div>
+
+<div class="card" onclick="flip(this)">
+  <span class="front">Voter ID</span>
+  <span class="back hidden">Identity card for voting.</span>
+</div>
+
+<div class="card" onclick="flip(this)">
+  <span class="front">Returning Officer</span>
+  <span class="back hidden">Conducts election in a constituency.</span>
+</div>
+
+<div class="card" onclick="flip(this)">
+  <span class="front">Ballot</span>
+  <span class="back hidden">Method of casting vote.</span>
+</div>
+
+<div class="card" onclick="flip(this)">
+  <span class="front">Election Roll</span>
+  <span class="back hidden">List of registered voters.</span>
+</div>
