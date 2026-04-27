@@ -1,36 +1,28 @@
-function showSection(sectionId, btn) {
-    document.querySelectorAll('.content-section').forEach(s => s.style.display = 'none');
-    document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
-    document.getElementById(sectionId).style.display = 'block';
-    btn.classList.add('active');
-}
+// செக்ஷன்களை மாற்றும் செயல்பாடு
+function showSection(sectionId) {
+    // 1. அனைத்து செக்ஷன்களையும் மறைக்க
+    const sections = document.querySelectorAll('.content-section');
+    sections.forEach(s => s.classList.add('hidden'));
 
-function checkAns(isCorrect, btn) {
-    if(isCorrect) {
-        btn.style.background = "#32cd32";
-        alert("Correct Answer! 🎉");
-    } else {
-        btn.style.background = "#ff4444";
-        alert("Wrong Answer! Try again.");
-    }
+    // 2. அனைத்து பட்டன் அனிமேஷன்களையும் நீக்க
+    const buttons = document.querySelectorAll('.tab-btn');
+    buttons.forEach(b => b.classList.remove('active'));
+
+    // 3. நாம் கிளிக் செய்ததை மட்டும் காட்ட
+    const activeSection = document.getElementById(sectionId);
+    activeSection.classList.remove('hidden');
+
+    // 4. கிளிக் செய்த பட்டனுக்கு கலர் கொடுக்க
+    event.currentTarget.classList.add('active');
 }
 
 function sendMessage() {
-    const chatBox = document.getElementById("chatBox");
+    const chatDisplay = document.getElementById("chatDisplay");
     const input = document.getElementById("userInput");
     if(!input.value) return;
-
-    chatBox.innerHTML += `<p style="color:#58a6ff; margin-bottom:10px;">You: ${input.value}</p>`;
-    
-    // Simple AI Simulation
+    chatDisplay.innerHTML += `<p style="color:cyan">You: ${input.value}</p>`;
     setTimeout(() => {
-        let reply = "I am processing your query about elections. Please check our Timeline or Checklist for more details!";
-        chatBox.innerHTML += `<p style="color:#32cd32; margin-bottom:10px;">AI: ${reply}</p>`;
-        chatBox.scrollTop = chatBox.scrollHeight;
-    }, 600);
-    
+        chatDisplay.innerHTML += `<p style="color:lime">Bot: Processing your election query...</p>`;
+    }, 500);
     input.value = "";
 }
-
-// System Testing for Evaluation Score
-console.log("Democracy Flow v2.0 Initialized Successfully.");
