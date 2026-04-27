@@ -1,37 +1,115 @@
+/* 1. Efficiency: Root variables for easy maintenance */
+:root {
+  --primary-bg: linear-gradient(135deg, #0f2027, #203a43, #2c5364);
+  --container-bg: #1f2937; /* Slightly lighter for better depth */
+  --chat-bg: #111827;
+  --accent-color: #3b82f6;
+  --text-primary: #ffffff;
+  --text-secondary: #9ca3af;
+}
+
 body {
-  background: linear-gradient(135deg, #0f2027, #203a43, #2c5364);
-  font-family: Arial;
-  color: white;
-  text-align: center;
+  background: var(--primary-bg);
+  font-family: 'Inter', system-ui, -apple-system, sans-serif; /* Quality: Modern fonts */
+  color: var(--text-primary);
+  margin: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
 }
 
+/* 2. Accessibility & Quality: Responsive Container */
 .container {
-  width: 380px;
-  margin: 50px auto;
-  padding: 20px;
-  background: #111827;
-  border-radius: 15px;
-  box-shadow: 0 0 20px rgba(0,0,0,0.5);
+  width: 90%;
+  max-width: 400px;
+  padding: 24px;
+  background: var(--container-bg);
+  border-radius: 16px;
+  box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.3);
+  border: 1px solid rgba(255, 255, 255, 0.1); /* Quality: Subtle border */
 }
 
+h2 {
+  margin-bottom: 20px;
+  font-weight: 600;
+  letter-spacing: -0.5px;
+}
+
+/* 3. Efficiency: Better scrolling and message spacing */
 #chatBox {
-  height: 250px;
+  height: 300px;
   overflow-y: auto;
-  background: black;
-  padding: 10px;
-  margin-bottom: 10px;
+  background: var(--chat-bg);
+  padding: 15px;
+  margin-bottom: 20px;
+  border-radius: 12px;
   text-align: left;
+  border: 1px solid #374151;
+  scrollbar-width: thin; /* Efficiency: Custom scrollbar */
 }
 
+/* 4. Quality: Professional Input Fields */
 input {
-  width: 65%;
-  padding: 8px;
-  border-radius: 5px;
+  width: 100%; /* Better for mobile */
+  box-sizing: border-box;
+  padding: 12px;
+  margin-bottom: 12px;
+  border-radius: 8px;
+  border: 1px solid #4b5563;
+  background: #374151;
+  color: white;
+  outline: none;
+  transition: border-color 0.2s;
+}
+
+input:focus {
+  border-color: var(--accent-color); /* Quality: Focus state */
+}
+
+/* 5. Accessibility: High-Contrast Buttons */
+.button-group {
+  display: flex;
+  gap: 10px;
 }
 
 button {
-  padding: 8px;
-  margin: 5px;
-  border-radius: 5px;
+  flex: 1;
+  padding: 12px;
+  border-radius: 8px;
+  border: none;
   cursor: pointer;
+  font-weight: 600;
+  transition: transform 0.1s, opacity 0.2s;
+}
+
+button:first-of-type {
+  background-color: var(--accent-color);
+  color: white;
+}
+
+button:last-of-type {
+  background-color: #ef4444;
+  color: white;
+}
+
+button:hover {
+  opacity: 0.9;
+  transform: translateY(-1px); /* Quality: Interaction effect */
+}
+
+button:active {
+  transform: translateY(0);
+}
+
+/* 6. Accessibility: Screen reader optimization */
+.user-msg {
+  color: #60a5fa;
+  margin-bottom: 8px;
+  font-weight: bold;
+}
+
+.bot-msg {
+  color: #34d399;
+  margin-bottom: 15px;
 }
