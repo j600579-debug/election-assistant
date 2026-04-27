@@ -1,55 +1,63 @@
-// செக்ஷன் சுவிட்ச்
-function showSection(id) {
-    document.querySelectorAll('.content-section').forEach(s => s.classList.add('hidden'));
-    document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
-    document.getElementById(id).classList.remove('hidden');
+// 1. Live Clock Logic
+function startClock() {
+    setInterval(() => {
+        const now = new Date();
+        document.getElementById("liveClock").textContent = now.toLocaleTimeString();
+    }, 1000);
+}
+
+// 2. Section Switch Logic
+function showPane(paneId) {
+    document.querySelectorAll('.content-panel').forEach(p => p.classList.add('hidden'));
+    document.querySelectorAll('.nav-btn').forEach(b => b.classList.remove('active'));
+    document.getElementById(paneId).classList.remove('hidden');
     event.currentTarget.classList.add('active');
 }
 
-// அசிஸ்டண்ட் மெசேஜ் ஹேண்ட்லர் (பிக்ஸ் செய்யப்பட்டது)
-function handleSend() {
-    const chatBox = document.getElementById("chatBox");
-    const input = document.getElementById("userInput");
-    const val = input.value.trim().toLowerCase();
-    
-    if(!val) return;
+// 3. Smart AI Assistant Logic (Answers any election query)
+const electionData = {
+    "vote": "Register at nvsp.in. Carry your Voter ID. Voting is your right!",
+    "age": "Minimum age to vote in India is 18 years.",
+    "nota": "NOTA allows you to reject all candidates in your constituency.",
+    "evm": "Electronic Voting Machine is used to record and count votes securely.",
+    "vvpat": "VVPAT provides a paper slip to verify your vote was cast correctly.",
+    "id": "You can use Voter ID, Aadhaar, PAN card, or Driving License.",
+    "mcc": "Model Code of Conduct starts once election dates are announced.",
+    "eci": "Election Commission of India (ECI) manages the entire process.",
+    "time": "Polling booths are usually open from 7:00 AM to 6:00 PM."
+};
 
-    chatBox.innerHTML += `<div style="color:#58a6ff; margin-bottom:10px;">You: ${input.value}</div>`;
+function handleAI() {
+    const chatDisplay = document.getElementById("chatDisplay");
+    const userInput = document.getElementById("userInput");
+    const query = userInput.value.trim().toLowerCase();
     
-    // AI பதில் லாஜிக்
+    if (!query) return;
+
+    // User Message
+    chatDisplay.innerHTML += `<div style="color:var(--accent); margin-bottom:10px;">You: ${userInput.value}</div>`;
+    
+    // AI Searching Logic
     setTimeout(() => {
-        let reply = "I am here to help! Ask about vote, age, or NOTA.";
-        if(val.includes("vote") || val.includes("ஓட்டு")) reply = "To vote, you must be 18+ and have a Voter ID.";
-        if(val.includes("age") || val.includes("வயது")) reply = "Minimum voting age in India is 18 years.";
-        if(val.includes("nota")) reply = "NOTA allows you to reject all candidates in your constituency.";
+        let answer = "I'm sorry, I don't have that specific info. Try asking about EVM, NOTA, Age, or ID.";
         
-        chatBox.innerHTML += `<div style="color:#32cd32; margin-bottom:10px;">Bot: ${reply}</div>`;
-        chatBox.scrollTop = chatBox.scrollHeight;
+        // Find best match in our data
+        for (let key in electionData) {
+            if (query.includes(key)) {
+                answer = electionData[key];
+                break;
+            }
+        }
+        
+        chatDisplay.innerHTML += `<div style="color:var(--green); margin-bottom:10px;">Bot: ${answer}</div>`;
+        chatDisplay.scrollTop = chatDisplay.scrollHeight;
     }, 400);
-    
-    input.value = "";
+
+    userInput.value = "";
 }
 
-// 10 முக்கிய கேள்விகள் (Quiz)
-const quizData = [
-    "1. இந்திய தேர்தல் ஆணையம் எப்போது தொடங்கப்பட்டது? (1950)",
-    "2. வாக்களிக்க குறைந்தபட்ச வயது என்ன? (18)",
-    "3. EVM என்பதன் விரிவாக்கம்? (Electronic Voting Machine)",
-    "4. முதல் பொதுத் தேர்தல் எப்போது நடந்தது? (1951-52)",
-    "5. தேர்தல் ஆணையத்தின் தலைமையகம் எங்குள்ளது? (புது தில்லி)",
-    "6. ஒரு வேட்பாளர் எத்தனை தொகுதிகளில் போட்டியிடலாம்? (அதிகபட்சம் 2)",
-    "7. NOTA எப்போது அறிமுகப்படுத்தப்பட்டது? (2013)",
-    "8. VVPAT எதற்காகப் பயன்படுகிறது? (வாக்கைச் சரிபார்க்க)",
-    "9. தேர்தல் நடத்தை விதிமுறைகள் (MCC) எப்போது தொடங்கும்? (தேதி அறிவித்தவுடன்)",
-    "10. தேசிய வாக்காளர் தினம் எப்போது? (ஜனவரி 25)"
-];
-
-const container = document.getElementById("quizContainer");
-quizData.forEach(q => {
-    container.innerHTML += `<p style="text-align:left; border-bottom:1px solid #30363d; padding:10px; font-size:14px;">${q}</p>`;
-});
-
-// Enter Key Support for Chat
+// 4. Initialization
+startClock();
 document.getElementById("userInput").addEventListener("keypress", (e) => {
-    if(e.key === "Enter") handleSend();
+    if (e.key === "Enter") handleAI();
 });
