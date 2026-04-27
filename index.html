@@ -3,27 +3,42 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Smart Election Assistant</title>
+    <title>Democracy Flow | Indian Election System</title>
     <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
 </head>
 <body>
-<main class="container" role="main">
-    <header>
-        <h2>🗳️ Smart Election Assistant</h2>
-        <div class="language-selector">
-            <button onclick="setLanguage('en')" id="btn-en" class="lang-btn active">English</button>
-            <button onclick="setLanguage('ta')" id="btn-ta" class="lang-btn">தமிழ்</button>
-        </div>
+
+<div class="main-wrapper">
+    <header class="hero-section">
+        <h1 class="gradient-text">Democracy Flow</h1>
+        <p>Interactive Guide to the Indian Election System</p>
     </header>
-    <div id="chatBox" role="log" aria-live="polite"></div>
-    <div class="input-area">
-        <input type="text" id="userInput" placeholder="Ask something..." aria-label="user input">
-        <div class="btn-group">
-            <button onclick="sendMessage()" class="send-btn">Send</button>
-            <button onclick="clearChat()" class="clear-btn">Clear</button>
+
+    <nav class="tab-container">
+        <button class="tab-btn active" onclick="setLanguage('en')" id="btn-en">English</button>
+        <button class="tab-btn" onclick="setLanguage('ta')" id="btn-ta">தமிழ்</button>
+    </nav>
+
+    <main class="content-card">
+        <div id="chatBox" role="log" aria-live="polite" class="chat-display">
+            <p style="color: #8b949e;">Welcome! Ask about voting, age, or NOTA.</p>
         </div>
-    </div>
-</main>
+        
+        <div class="input-area">
+            <input type="text" id="userInput" placeholder="Ask here / இங்கே கேட்கவும்..." autocomplete="off">
+            <div class="btn-group">
+                <button onclick="sendMessage()" class="action-btn primary">Send</button>
+                <button onclick="clearChat()" class="action-btn secondary">Clear</button>
+            </div>
+        </div>
+    </main>
+
+    <footer class="site-footer">
+        <p>© 2026 Democracy Flow Education. Built with React & Vite.</p>
+    </footer>
+</div>
+
 <script src="script.js"></script>
 </body>
 </html>
