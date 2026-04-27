@@ -3,61 +3,78 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Democracy Flow | AI Election Assistant</title>
+    <title>Democracy Flow | Official Portal</title>
     <link rel="stylesheet" href="style.css">
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
 </head>
 <body>
 
-<div class="site-container">
+<div class="site-wrapper">
     <header class="navbar">
-        <div class="nav-logo gradient-text">Democracy Flow</div>
-        <div class="nav-right">
-            <div id="liveClock" class="digital-clock">00:00:00 AM</div>
-            <nav class="nav-links">
-                <button class="nav-btn active" onclick="showPane('timeline')">Timeline</button>
-                <button class="nav-btn" onclick="showPane('quiz')">Quiz</button>
-                <button class="nav-btn" onclick="showPane('chat')">AI Assistant</button>
-            </nav>
-        </div>
+        <div class="logo gradient-text">Democracy Flow</div>
+        <nav class="nav-menu">
+            <button class="nav-item active" onclick="openTab(event, 'timeline')">Timeline</button>
+            <button class="nav-item" onclick="openTab(event, 'flashcards')">Flashcards</button>
+            <button class="nav-item" onclick="openTab(event, 'quiz')">Quiz</button>
+            <button class="nav-item" onclick="openTab(event, 'assistant')">AI Assistant</button>
+        </nav>
     </header>
 
-    <main class="content-wrapper">
-        <section id="timeline" class="content-panel">
-            <h2 class="panel-title">Election Process Path 2026</h2>
-            <div class="modern-timeline">
-                <div class="t-item"><span class="dot"></span><h4>Announcement</h4><p>ECI sets the dates.</p></div>
-                <div class="t-item"><span class="dot"></span><h4>Nominations</h4><p>Candidates file papers.</p></div>
-                <div class="t-item"><span class="dot"></span><h4>Polling</h4><p>Nationwide voting day.</p></div>
-                <div class="t-item"><span class="dot"></span><h4>Results</h4><p>Counting & Winners.</p></div>
+    <main class="main-content">
+        <div id="timeline" class="tab-content active">
+            <h2 class="panel-title">Election Journey 2026</h2>
+            <div class="timeline-list">
+                <div class="t-box"><h4>Step 1: Announcement</h4><p>ECI announces dates & MCC begins.</p></div>
+                <div class="t-box"><h4>Step 2: Nominations</h4><p>Candidates file their nomination papers.</p></div>
+                <div class="t-box"><h4>Step 3: Campaigning</h4><p>Candidates meet voters to share ideas.</p></div>
+                <div class="t-box"><h4>Step 4: Voting Day</h4><p>Citizens cast their votes in the booths.</p></div>
+                <div class="t-box"><h4>Step 5: Counting</h4><p>EVMs are opened and votes are counted.</p></div>
             </div>
-        </section>
+        </div>
 
-        <section id="quiz" class="content-panel hidden">
-            <h2 class="panel-title">Voter Intelligence Test</h2>
-            <div class="quiz-box">
-                <p class="question">Which machine is used for recording votes in India?</p>
-                <div class="options">
-                    <button class="opt-btn" onclick="check(true)">EVM</button>
-                    <button class="opt-btn" onclick="check(false)">ATM</button>
+        <div id="flashcards" class="tab-content">
+            <h2 class="panel-title">Election Terms</h2>
+            <div class="cards-container">
+                <div class="flip-card" onclick="this.classList.toggle('flipped')">
+                    <div class="flip-card-inner">
+                        <div class="flip-card-front">EVM</div>
+                        <div class="flip-card-back">Electronic machine used to record votes safely.</div>
+                    </div>
+                </div>
+                <div class="flip-card" onclick="this.classList.toggle('flipped')">
+                    <div class="flip-card-inner">
+                        <div class="flip-card-front">NOTA</div>
+                        <div class="flip-card-back">Allows voters to reject all candidates in their area.</div>
+                    </div>
                 </div>
             </div>
-        </section>
+        </div>
 
-        <section id="chat" class="content-panel hidden">
-            <h2 class="panel-title">Smart Voter Assistant</h2>
-            <div id="chatDisplay" class="chat-area">
-                <div class="bot-msg">Welcome! Ask me anything about Elections (EVM, ID, NOTA, Age, Rules).</div>
+        <div id="quiz" class="tab-content">
+            <h2 class="panel-title">Test Your Knowledge</h2>
+            <div class="quiz-ui">
+                <p>What is the minimum age to vote in India?</p>
+                <div class="quiz-btns">
+                    <button class="q-btn" onclick="checkAns(true)">18 Years</button>
+                    <button class="q-btn" onclick="checkAns(false)">21 Years</button>
+                </div>
             </div>
-            <div class="input-group">
-                <input type="text" id="userInput" placeholder="Type your election question here...">
-                <button onclick="handleAI()" class="send-btn">Send</button>
+        </div>
+
+        <div id="assistant" class="tab-content">
+            <h2 class="panel-title">Smart Assistant</h2>
+            <div id="msgWindow" class="msg-box">
+                <p style="color: #8b949e;">Ask me anything about Voting, Age, NOTA, or ID cards.</p>
             </div>
-        </section>
+            <div class="input-row">
+                <input type="text" id="userInput" placeholder="Ask your question...">
+                <button onclick="askBot()" class="send-btn">Send</button>
+            </div>
+        </div>
     </main>
 
     <footer class="site-footer">
-        <p>© 2026 Democracy Flow Education. Built with High-Performance AI Logic.</p>
+        <p>© 2026 Democracy Flow Education. Built with High-End Logic.</p>
     </footer>
 </div>
 
