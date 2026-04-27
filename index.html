@@ -1,7 +1,8 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-<title>Election App</title>
+<meta charset="UTF-8">
+<title>Democracy Flow</title>
 <link rel="stylesheet" href="style.css">
 </head>
 
@@ -9,26 +10,56 @@
 
 <h1>Democracy Flow</h1>
 
+<div class="nav">
+<button onclick="show('timeline')">Timeline</button>
+<button onclick="show('flash')">Flashcards</button>
 <button onclick="show('quiz')">Quiz</button>
 <button onclick="show('chat')">Chat</button>
+</div>
+
+<div id="timeline" class="section active">
+<h2>Election Timeline</h2>
+<p>Step 1: Election Announcement</p>
+<p>Step 2: Candidate Filing</p>
+<p>Step 3: Campaign</p>
+<p>Step 4: Voting</p>
+<p>Step 5: Counting</p>
+</div>
+
+<div id="flash" class="section">
+<h2>Flashcards</h2>
+
+<div class="card" onclick="flip(this)">ECI</div>
+<div class="card" onclick="flip(this)">EVM</div>
+<div class="card" onclick="flip(this)">VVPAT</div>
+<div class="card" onclick="flip(this)">NOTA</div>
+
+</div>
 
 <div id="quiz" class="section">
-  <h2>Quiz</h2>
-  <p id="q"></p>
-  <button onclick="answer(0)" id="a0"></button>
-  <button onclick="answer(1)" id="a1"></button>
-  <button onclick="answer(2)" id="a2"></button>
-  <p id="score"></p>
+<h2>Quiz</h2>
+
+<p id="q">Who conducts elections in India?</p>
+
+<button onclick="check('a')">Supreme Court</button><br><br>
+<button onclick="check('b')">Election Commission</button>
+
+<p id="result"></p>
+
 </div>
 
 <div id="chat" class="section">
-  <h2>Chat</h2>
-  <div id="chatbox"></div>
-  <input id="input">
-  <button onclick="send()">Send</button>
+<h2>Chat Assistant</h2>
+
+<div class="chat-box">
+<p id="chatArea"></p>
+
+<input id="msg" placeholder="Ask something">
+<button class="send" onclick="send()">Send</button>
+
+</div>
 </div>
 
-<!-- IMPORTANT -->
 <script src="script.js"></script>
 
 </body>
