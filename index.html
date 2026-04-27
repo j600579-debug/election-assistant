@@ -3,79 +3,46 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Democracy Flow | Official Portal</title>
+    <title>Voter Awareness Portal</title>
     <link rel="stylesheet" href="style.css">
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
 </head>
 <body>
 
-<div class="site-wrapper">
+<div class="app-container">
     <header class="navbar">
-        <div class="logo gradient-text">Democracy Flow</div>
+        <div class="logo">VoterGuide AI</div>
         <nav class="nav-menu">
-            <button class="nav-item active" onclick="openTab(event, 'timeline')">Timeline</button>
-            <button class="nav-item" onclick="openTab(event, 'flashcards')">Flashcards</button>
-            <button class="nav-item" onclick="openTab(event, 'quiz')">Quiz</button>
-            <button class="nav-item" onclick="openTab(event, 'assistant')">AI Assistant</button>
+            <button class="nav-link active" onclick="showTab('chat')">AI Assistant</button>
+            <button class="nav-link" onclick="showTab('cards')">Flashcards</button>
+            <button class="nav-link" onclick="showTab('quiz')">Quiz</button>
         </nav>
     </header>
 
-    <main class="main-content">
-        <div id="timeline" class="tab-content active">
-            <h2 class="panel-title">Election Journey 2026</h2>
-            <div class="timeline-list">
-                <div class="t-box"><h4>Step 1: Announcement</h4><p>ECI announces dates & MCC begins.</p></div>
-                <div class="t-box"><h4>Step 2: Nominations</h4><p>Candidates file their nomination papers.</p></div>
-                <div class="t-box"><h4>Step 3: Campaigning</h4><p>Candidates meet voters to share ideas.</p></div>
-                <div class="t-box"><h4>Step 4: Voting Day</h4><p>Citizens cast their votes in the booths.</p></div>
-                <div class="t-box"><h4>Step 5: Counting</h4><p>EVMs are opened and votes are counted.</p></div>
-            </div>
-        </div>
-
-        <div id="flashcards" class="tab-content">
-            <h2 class="panel-title">Election Terms</h2>
-            <div class="cards-container">
-                <div class="flip-card" onclick="this.classList.toggle('flipped')">
-                    <div class="flip-card-inner">
-                        <div class="flip-card-front">EVM</div>
-                        <div class="flip-card-back">Electronic machine used to record votes safely.</div>
-                    </div>
+    <main class="content">
+        <section id="chat" class="tab-content active">
+            <div class="panel">
+                <h2>Smart Voter Assistant</h2>
+                <div id="chatWindow" class="chat-window">
+                    <div class="bot-msg">வணக்கம்! ஓட்டுப் பதிவு அல்லது தேர்தல் விதிகள் பற்றி என்னிடம் கேளுங்கள்.</div>
                 </div>
-                <div class="flip-card" onclick="this.classList.toggle('flipped')">
-                    <div class="flip-card-inner">
-                        <div class="flip-card-front">NOTA</div>
-                        <div class="flip-card-back">Allows voters to reject all candidates in their area.</div>
-                    </div>
+                <div class="input-area">
+                    <input type="text" id="userInput" placeholder="உங்கள் கேள்வியைத் தட்டச்சு செய்க...">
+                    <button onclick="askBot()">அனுப்பு</button>
                 </div>
             </div>
-        </div>
+        </section>
 
-        <div id="quiz" class="tab-content">
-            <h2 class="panel-title">Test Your Knowledge</h2>
-            <div class="quiz-ui">
-                <p>What is the minimum age to vote in India?</p>
-                <div class="quiz-btns">
-                    <button class="q-btn" onclick="checkAns(true)">18 Years</button>
-                    <button class="q-btn" onclick="checkAns(false)">21 Years</button>
-                </div>
-            </div>
-        </div>
+        <section id="cards" class="tab-content">
+            <h2>Election Terms (10)</h2>
+            <div class="grid" id="cardsGrid"></div>
+        </section>
 
-        <div id="assistant" class="tab-content">
-            <h2 class="panel-title">Smart Assistant</h2>
-            <div id="msgWindow" class="msg-box">
-                <p style="color: #8b949e;">Ask me anything about Voting, Age, NOTA, or ID cards.</p>
-            </div>
-            <div class="input-row">
-                <input type="text" id="userInput" placeholder="Ask your question...">
-                <button onclick="askBot()" class="send-btn">Send</button>
-            </div>
-        </div>
+        <section id="quiz" class="tab-content">
+            <h2>Test Your Knowledge (10)</h2>
+            <div id="quizContainer" class="panel"></div>
+        </section>
     </main>
-
-    <footer class="site-footer">
-        <p>© 2026 Democracy Flow Education. Built with High-End Logic.</p>
-    </footer>
 </div>
 
 <script src="script.js"></script>
