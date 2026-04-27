@@ -1,97 +1,67 @@
 body {
   margin: 0;
-  font-family: 'Segoe UI', sans-serif;
-  background: linear-gradient(135deg, #0f2027, #203a43, #2c5364);
+  font-family: Arial;
+  background: linear-gradient(135deg,#0f2027,#203a43,#2c5364);
   color: white;
-}
-
-/* Container */
-.container {
-  width: 90%;
-  max-width: 900px;
-  margin: 50px auto;
   text-align: center;
 }
 
-/* Title */
 h1 {
-  font-size: 28px;
-  margin-bottom: 20px;
+  margin-top: 20px;
+  font-size: 40px;
+  background: linear-gradient(90deg,orange,lightgreen);
+  -webkit-background-clip: text;
+  color: transparent;
 }
 
-/* Tabs */
-.tabs {
-  display: flex;
-  justify-content: center;
-  gap: 10px;
-  margin-bottom: 20px;
-}
-
-.tabs button {
-  padding: 10px 15px;
-  border-radius: 20px;
-  border: none;
-  background: rgba(255,255,255,0.1);
-  color: white;
-  backdrop-filter: blur(10px);
-  cursor: pointer;
-  transition: 0.3s;
-}
-
-.tabs button:hover {
-  background: rgba(0,255,200,0.4);
-}
-
-/* Glass Box */
-.tab-content {
-  padding: 20px;
-  border-radius: 15px;
-  background: rgba(255,255,255,0.1);
-  backdrop-filter: blur(15px);
-  box-shadow: 0 0 20px rgba(0,255,200,0.2);
-}
-
-.hidden {
-  display: none;
-}
-
-/* Cards */
-.card {
-  display: inline-block;
-  width: 150px;
-  height: 100px;
-  margin: 10px;
-  padding: 20px;
-  border-radius: 15px;
-  background: rgba(255,255,255,0.1);
-  backdrop-filter: blur(10px);
-  transition: 0.3s;
-  cursor: pointer;
-}
-
-.card:hover {
-  transform: scale(1.05);
-  box-shadow: 0 0 15px #00ffc8;
-}
-
-/* Input */
-input {
-  width: 70%;
-  padding: 10px;
-  border-radius: 20px;
-  border: none;
-  outline: none;
+.nav {
+  margin: 20px;
 }
 
 button {
   padding: 10px 15px;
-  border-radius: 20px;
+  margin: 5px;
   border: none;
-  background: #00ffc8;
+  border-radius: 8px;
+  background: rgba(255,255,255,0.1);
+  color: white;
   cursor: pointer;
 }
 
-/* Neon glow */
-h1, .tabs button:hover {
-  text-shadow: 0 0 10px #00ffc8;
+.section {
+  display: none;
+  padding: 20px;
+}
+
+.active {
+  display: block;
+}
+
+.card-container {
+  display: grid;
+  grid-template-columns: repeat(3,1fr);
+  gap: 15px;
+  padding: 20px;
+}
+
+.card {
+  background: rgba(255,255,255,0.1);
+  padding: 20px;
+  border-radius: 10px;
+  cursor: pointer;
+}
+
+.chat-box {
+  width: 80%;
+  margin: auto;
+  background: black;
+  padding: 10px;
+  border-radius: 10px;
+  height: 200px;
+  overflow-y: auto;
+}
+
+input {
+  padding: 10px;
+  width: 60%;
 }
