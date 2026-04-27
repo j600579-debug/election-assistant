@@ -3,39 +3,80 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Democracy Flow | Indian Election System</title>
+    <title>Democracy Flow | Advanced Election Portal</title>
     <link rel="stylesheet" href="style.css">
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600&display=swap" rel="stylesheet">
 </head>
 <body>
 
 <div class="main-wrapper">
-    <header class="hero-section">
+    <header class="hero">
         <h1 class="gradient-text">Democracy Flow</h1>
-        <p>Interactive Guide to the Indian Election System</p>
+        <p>Your Ultimate Interactive Guide to 2026 Elections</p>
     </header>
 
-    <nav class="tab-container">
-        <button class="tab-btn active" onclick="setLanguage('en')" id="btn-en">English</button>
-        <button class="tab-btn" onclick="setLanguage('ta')" id="btn-ta">தமிழ்</button>
+    <nav class="tab-bar">
+        <button class="tab-btn active" onclick="showSection('timeline', this)">Timeline</button>
+        <button class="tab-btn" onclick="showSection('flashcards', this)">Vocabulary</button>
+        <button class="tab-btn" onclick="showSection('checklist', this)">Voter Checklist</button>
+        <button class="tab-btn" onclick="showSection('quiz', this)">Quiz</button>
+        <button class="tab-btn" onclick="showSection('chat', this)">Assistant</button>
     </nav>
 
-    <main class="content-card">
-        <div id="chatBox" role="log" aria-live="polite" class="chat-display">
-            <p style="color: #8b949e;">Welcome! Ask about voting, age, or NOTA.</p>
+    <section id="timeline" class="content-section">
+        <h2 class="section-title">Election Process Timeline</h2>
+        <div class="timeline-container">
+            <div class="timeline-item"><div class="dot"></div><h3>Step 1: Announcement</h3><p>Dates & MCC start.</p></div>
+            <div class="timeline-item"><div class="dot"></div><h3>Step 2: Nominations</h3><p>Candidates file papers.</p></div>
+            <div class="timeline-item"><div class="dot"></div><h3>Step 3: Polling Day</h3><p>Citizens cast their votes.</p></div>
+            <div class="timeline-item"><div class="dot"></div><h3>Step 4: Results</h3><p>Counting & Winner announcement.</p></div>
         </div>
-        
-        <div class="input-area">
-            <input type="text" id="userInput" placeholder="Ask here / இங்கே கேட்கவும்..." autocomplete="off">
-            <div class="btn-group">
-                <button onclick="sendMessage()" class="action-btn primary">Send</button>
-                <button onclick="clearChat()" class="action-btn secondary">Clear</button>
+    </section>
+
+    <section id="flashcards" class="content-section" style="display:none;">
+        <h2 class="section-title">Important Terms (Flip to Learn)</h2>
+        <div class="grid-container">
+            <div class="card" onclick="this.classList.toggle('flipped')"><div class="card-inner"><div class="card-front">EVM</div><div class="card-back">Electronic machine to record votes safely.</div></div></div>
+            <div class="card" onclick="this.classList.toggle('flipped')"><div class="card-inner"><div class="card-front">NOTA</div><div class="card-back">Option to reject all candidates in the list.</div></div></div>
+            <div class="card" onclick="this.classList.toggle('flipped')"><div class="card-inner"><div class="card-front">MCC</div><div class="card-back">Model Code of Conduct for fair elections.</div></div></div>
+            <div class="card" onclick="this.classList.toggle('flipped')"><div class="card-inner"><div class="card-front">EPIC</div><div class="card-back">Electoral Photo Identity Card (Voter ID).</div></div></div>
+        </div>
+    </section>
+
+    <section id="checklist" class="content-section" style="display:none;">
+        <h2 class="section-title">Voter Preparation Checklist</h2>
+        <div class="check-list">
+            <label class="check-item"><input type="checkbox"> Check name in Electoral Roll</label>
+            <label class="check-item"><input type="checkbox"> Download Voter Information Slip</label>
+            <label class="check-item"><input type="checkbox"> Locate Polling Booth</label>
+            <label class="check-item"><input type="checkbox"> Carry Valid ID Proof</label>
+        </div>
+    </section>
+
+    <section id="quiz" class="content-section" style="display:none;">
+        <div class="quiz-card">
+            <div class="quiz-meta">Question 1 | Score: 0</div>
+            <h3 class="question">What is the minimum age to vote in India?</h3>
+            <div class="options">
+                <button class="opt-btn" onclick="checkAns(false, this)">21 Years</button>
+                <button class="opt-btn" onclick="checkAns(true, this)">18 Years</button>
+                <button class="opt-btn" onclick="checkAns(false, this)">25 Years</button>
             </div>
         </div>
-    </main>
+    </section>
+
+    <section id="chat" class="content-section" style="display:none;">
+        <div class="chat-window" id="chatBox">
+            <p class="bot-text">AI Assistant: How can I help you today?</p>
+        </div>
+        <div class="chat-input-area">
+            <input type="text" id="userInput" placeholder="Ask about EVM, Voter ID, Process...">
+            <button onclick="sendMessage()" class="send-btn">Send</button>
+        </div>
+    </section>
 
     <footer class="site-footer">
-        <p>© 2026 Democracy Flow Education. Built with React & Vite.</p>
+        <p>© 2026 Democracy Flow Education. Built with High Performance Stack.</p>
     </footer>
 </div>
 
