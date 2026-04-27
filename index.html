@@ -3,71 +3,58 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Democracy Flow | Advanced Portal</title>
+    <title>Democracy Flow | AI Election Assistant</title>
     <link rel="stylesheet" href="style.css">
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
 </head>
 <body>
 
-<div class="main-wrapper">
-    <header class="hero">
-        <h1 class="gradient-text">Democracy Flow</h1>
-        <p>Interactive Guide to the Indian Election System</p>
+<div class="site-container">
+    <header class="navbar">
+        <div class="nav-logo gradient-text">Democracy Flow</div>
+        <div class="nav-right">
+            <div id="liveClock" class="digital-clock">00:00:00 AM</div>
+            <nav class="nav-links">
+                <button class="nav-btn active" onclick="showPane('timeline')">Timeline</button>
+                <button class="nav-btn" onclick="showPane('quiz')">Quiz</button>
+                <button class="nav-btn" onclick="showPane('chat')">AI Assistant</button>
+            </nav>
+        </div>
     </header>
 
-    <nav class="tab-bar">
-        <button class="tab-btn active" onclick="showSection('timeline')">Timeline</button>
-        <button class="tab-btn" onclick="showSection('flashcards')">Vocabulary</button>
-        <button class="tab-btn" onclick="showSection('quiz')">Quiz</button>
-        <button class="tab-btn" onclick="showSection('chat')">Assistant</button>
-    </nav>
-
-    <section id="timeline" class="content-section">
-        <h2 class="section-title">Election Process Path</h2>
-        <div class="modern-timeline">
-            <div class="t-item"><span>1</span><h4>Schedule Announcement</h4><p>ECI declares election dates.</p></div>
-            <div class="t-item"><span>2</span><h4>Notification Issue</h4><p>Official call for candidates.</p></div>
-            <div class="t-item"><span>3</span><h4>Nominations</h4><p>Candidates file papers.</p></div>
-            <div class="t-item"><span>4</span><h4>Scrutiny</h4><p>Verification of documents.</p></div>
-            <div class="t-item"><span>5</span><h4>Withdrawal</h4><p>Last date to cancel nomination.</p></div>
-            <div class="t-item"><span>6</span><h4>Campaigning</h4><p>Parties meet voters (ends 48hrs before poll).</p></div>
-            <div class="t-item"><span>7</span><h4>Polling Day</h4><p>Citizens cast their votes.</p></div>
-            <div class="t-item"><span>8</span><h4>EVM Sealing</h4><p>Safe storage of machines.</p></div>
-            <div class="t-item"><span>9</span><h4>Counting Day</h4><p>Votes are counted under security.</p></div>
-            <div class="t-item"><span>10</span><h4>Results</h4><p>Winners are officially declared.</p></div>
-        </div>
-    </section>
-
-    <section id="flashcards" class="content-section hidden">
-        <h2 class="section-title">Key Terms (Click to Flip)</h2>
-        <div class="grid-container">
-            <div class="card" onclick="this.classList.toggle('flipped')"><div class="card-inner"><div class="card-front">EVM</div><div class="card-back">Electronic machine to record votes.</div></div></div>
-            <div class="card" onclick="this.classList.toggle('flipped')"><div class="card-inner"><div class="card-front">VVPAT</div><div class="card-back">Paper slip verification for voters.</div></div></div>
-            <div class="card" onclick="this.classList.toggle('flipped')"><div class="card-inner"><div class="card-front">NOTA</div><div class="card-back">Rejecting all candidates.</div></div></div>
-            <div class="card" onclick="this.classList.toggle('flipped')"><div class="card-inner"><div class="card-front">MCC</div><div class="card-back">Rules for parties and candidates.</div></div></div>
-            <div class="card" onclick="this.classList.toggle('flipped')"><div class="card-inner"><div class="card-front">EPIC</div><div class="card-back">Voter ID Card.</div></div></div>
-            <div class="card" onclick="this.classList.toggle('flipped')"><div class="card-inner"><div class="card-front">ECI</div><div class="card-back">Election Commission of India.</div></div></div>
-            <div class="card" onclick="this.classList.toggle('flipped')"><div class="card-inner"><div class="card-front">BLO</div><div class="card-back">Booth Level Officer.</div></div></div>
-            <div class="card" onclick="this.classList.toggle('flipped')"><div class="card-inner"><div class="card-front">EP Ratio</div><div class="card-back">Elector to Population ratio.</div></div></div>
-            <div class="card" onclick="this.classList.toggle('flipped')"><div class="card-inner"><div class="card-front">Proxy</div><div class="card-back">Voting on behalf of someone else.</div></div></div>
-            <div class="card" onclick="this.classList.toggle('flipped')"><div class="card-inner"><div class="card-front">Manifesto</div><div class="card-back">Party's vision and promises.</div></div></div>
-        </div>
-    </section>
-
-    <section id="quiz" class="content-section hidden">
-        <h2 class="section-title">Knowledge Check</h2>
-        <div id="quizContainer">
+    <main class="content-wrapper">
+        <section id="timeline" class="content-panel">
+            <h2 class="panel-title">Election Process Path 2026</h2>
+            <div class="modern-timeline">
+                <div class="t-item"><span class="dot"></span><h4>Announcement</h4><p>ECI sets the dates.</p></div>
+                <div class="t-item"><span class="dot"></span><h4>Nominations</h4><p>Candidates file papers.</p></div>
+                <div class="t-item"><span class="dot"></span><h4>Polling</h4><p>Nationwide voting day.</p></div>
+                <div class="t-item"><span class="dot"></span><h4>Results</h4><p>Counting & Winners.</p></div>
             </div>
-    </section>
+        </section>
 
-    <section id="chat" class="content-section hidden">
-        <h2 class="section-title">Voter Assistant</h2>
-        <div id="chatBox" class="chat-display"></div>
-        <div class="input-row">
-            <input type="text" id="userInput" placeholder="Ask about voting age, NOTA, EVM...">
-            <button onclick="handleSend()" id="sendBtn">Send</button>
-        </div>
-    </section>
+        <section id="quiz" class="content-panel hidden">
+            <h2 class="panel-title">Voter Intelligence Test</h2>
+            <div class="quiz-box">
+                <p class="question">Which machine is used for recording votes in India?</p>
+                <div class="options">
+                    <button class="opt-btn" onclick="check(true)">EVM</button>
+                    <button class="opt-btn" onclick="check(false)">ATM</button>
+                </div>
+            </div>
+        </section>
+
+        <section id="chat" class="content-panel hidden">
+            <h2 class="panel-title">Smart Voter Assistant</h2>
+            <div id="chatDisplay" class="chat-area">
+                <div class="bot-msg">Welcome! Ask me anything about Elections (EVM, ID, NOTA, Age, Rules).</div>
+            </div>
+            <div class="input-group">
+                <input type="text" id="userInput" placeholder="Type your election question here...">
+                <button onclick="handleAI()" class="send-btn">Send</button>
+            </div>
+        </section>
+    </main>
 
     <footer class="site-footer">
         <p>© 2026 Democracy Flow Education. Built with High-Performance AI Logic.</p>
