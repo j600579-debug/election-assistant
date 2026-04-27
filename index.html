@@ -3,8 +3,9 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Democracy Flow | Election Guide</title>
+    <title>Democracy Flow | Advanced Portal</title>
     <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap" rel="stylesheet">
 </head>
 <body>
 
@@ -16,68 +17,60 @@
 
     <nav class="tab-bar">
         <button class="tab-btn active" onclick="showSection('timeline')">Timeline</button>
-        <button class="tab-btn" onclick="showSection('flashcards')">Flashcards</button>
-        <button class="tab-btn" onclick="showSection('checklist')">Checklist</button>
+        <button class="tab-btn" onclick="showSection('flashcards')">Vocabulary</button>
         <button class="tab-btn" onclick="showSection('quiz')">Quiz</button>
         <button class="tab-btn" onclick="showSection('chat')">Assistant</button>
     </nav>
 
     <section id="timeline" class="content-section">
-        <h2 class="section-title">Election Timeline</h2>
-        <div class="timeline-container">
-            <div class="timeline-item"><h3>Step 1: Announcement</h3><p>ECI announces dates.</p></div>
-            <div class="timeline-item"><h3>Step 2: Nominations</h3><p>Candidates file papers.</p></div>
-            <div class="timeline-item"><h3>Step 3: Voting</h3><p>Citizens cast their votes.</p></div>
+        <h2 class="section-title">Election Process Path</h2>
+        <div class="modern-timeline">
+            <div class="t-item"><span>1</span><h4>Schedule Announcement</h4><p>ECI declares election dates.</p></div>
+            <div class="t-item"><span>2</span><h4>Notification Issue</h4><p>Official call for candidates.</p></div>
+            <div class="t-item"><span>3</span><h4>Nominations</h4><p>Candidates file papers.</p></div>
+            <div class="t-item"><span>4</span><h4>Scrutiny</h4><p>Verification of documents.</p></div>
+            <div class="t-item"><span>5</span><h4>Withdrawal</h4><p>Last date to cancel nomination.</p></div>
+            <div class="t-item"><span>6</span><h4>Campaigning</h4><p>Parties meet voters (ends 48hrs before poll).</p></div>
+            <div class="t-item"><span>7</span><h4>Polling Day</h4><p>Citizens cast their votes.</p></div>
+            <div class="t-item"><span>8</span><h4>EVM Sealing</h4><p>Safe storage of machines.</p></div>
+            <div class="t-item"><span>9</span><h4>Counting Day</h4><p>Votes are counted under security.</p></div>
+            <div class="t-item"><span>10</span><h4>Results</h4><p>Winners are officially declared.</p></div>
         </div>
     </section>
 
     <section id="flashcards" class="content-section hidden">
-        <h2 class="section-title">Flashcards (Click to Flip)</h2>
+        <h2 class="section-title">Key Terms (Click to Flip)</h2>
         <div class="grid-container">
-            <div class="card" onclick="this.classList.toggle('flipped')">
-                <div class="card-inner">
-                    <div class="card-front">EVM</div>
-                    <div class="card-back">Electronic machine to record votes.</div>
-                </div>
-            </div>
-            <div class="card" onclick="this.classList.toggle('flipped')">
-                <div class="card-inner">
-                    <div class="card-front">NOTA</div>
-                    <div class="card-back">Option to reject all candidates.</div>
-                </div>
-            </div>
+            <div class="card" onclick="this.classList.toggle('flipped')"><div class="card-inner"><div class="card-front">EVM</div><div class="card-back">Electronic machine to record votes.</div></div></div>
+            <div class="card" onclick="this.classList.toggle('flipped')"><div class="card-inner"><div class="card-front">VVPAT</div><div class="card-back">Paper slip verification for voters.</div></div></div>
+            <div class="card" onclick="this.classList.toggle('flipped')"><div class="card-inner"><div class="card-front">NOTA</div><div class="card-back">Rejecting all candidates.</div></div></div>
+            <div class="card" onclick="this.classList.toggle('flipped')"><div class="card-inner"><div class="card-front">MCC</div><div class="card-back">Rules for parties and candidates.</div></div></div>
+            <div class="card" onclick="this.classList.toggle('flipped')"><div class="card-inner"><div class="card-front">EPIC</div><div class="card-back">Voter ID Card.</div></div></div>
+            <div class="card" onclick="this.classList.toggle('flipped')"><div class="card-inner"><div class="card-front">ECI</div><div class="card-back">Election Commission of India.</div></div></div>
+            <div class="card" onclick="this.classList.toggle('flipped')"><div class="card-inner"><div class="card-front">BLO</div><div class="card-back">Booth Level Officer.</div></div></div>
+            <div class="card" onclick="this.classList.toggle('flipped')"><div class="card-inner"><div class="card-front">EP Ratio</div><div class="card-back">Elector to Population ratio.</div></div></div>
+            <div class="card" onclick="this.classList.toggle('flipped')"><div class="card-inner"><div class="card-front">Proxy</div><div class="card-back">Voting on behalf of someone else.</div></div></div>
+            <div class="card" onclick="this.classList.toggle('flipped')"><div class="card-inner"><div class="card-front">Manifesto</div><div class="card-back">Party's vision and promises.</div></div></div>
         </div>
-    </section>
-
-    <section id="checklist" class="content-section hidden">
-        <h2 class="section-title">Voter Checklist</h2>
-        <ul class="check-list">
-            <li><input type="checkbox"> Check name in Voter List</li>
-            <li><input type="checkbox"> Locate your Booth</li>
-            <li><input type="checkbox"> Carry ID Proof</li>
-        </ul>
     </section>
 
     <section id="quiz" class="content-section hidden">
-        <h2 class="section-title">Election Quiz</h2>
-        <div class="quiz-card">
-            <p>What is the minimum age to vote in India?</p>
-            <button onclick="alert('Correct!')" class="opt-btn">18 Years</button>
-            <button onclick="alert('Wrong!')" class="opt-btn">21 Years</button>
-        </div>
+        <h2 class="section-title">Knowledge Check</h2>
+        <div id="quizContainer">
+            </div>
     </section>
 
     <section id="chat" class="content-section hidden">
-        <h2 class="section-title">AI Assistant</h2>
-        <div id="chatDisplay" class="chat-display"></div>
-        <div class="input-group">
-            <input type="text" id="userInput" placeholder="Ask something...">
-            <button onclick="sendMessage()">Send</button>
+        <h2 class="section-title">Voter Assistant</h2>
+        <div id="chatBox" class="chat-display"></div>
+        <div class="input-row">
+            <input type="text" id="userInput" placeholder="Ask about voting age, NOTA, EVM...">
+            <button onclick="handleSend()" id="sendBtn">Send</button>
         </div>
     </section>
 
     <footer class="site-footer">
-        <p>© 2026 Democracy Flow Education. Built with React & Vite Sim.</p>
+        <p>© 2026 Democracy Flow Education. Built with High-Performance AI Logic.</p>
     </footer>
 </div>
 
