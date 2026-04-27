@@ -1,49 +1,138 @@
-<div class="card" onclick="flip(this)">
-  <span class="front">ECI</span>
-  <span class="back hidden">Election Commission of India conducts elections.</span>
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Smart Election Assistant</title>
+
+<style>
+body {
+  font-family: Arial;
+  background: #0f2027;
+  color: white;
+  text-align: center;
+}
+
+.box {
+  background: #1c1c1c;
+  padding: 20px;
+  margin: 20px;
+  border-radius: 10px;
+}
+
+button {
+  padding: 10px;
+  margin: 5px;
+}
+.hidden {
+  display: none;
+}
+</style>
+
+</head>
+
+<body>
+
+<h1>🗳 Smart Election Assistant</h1>
+
+<button onclick="showTab('cards')">Flashcards</button>
+<button onclick="showTab('quiz')">Quiz</button>
+<button onclick="showTab('chat')">Chat</button>
+
+<!-- FLASHCARDS -->
+<div id="cards" class="box">
+  <h2>Flashcards</h2>
+
+  <button onclick="flip(this,'Election Commission of India')">ECI</button>
+  <button onclick="flip(this,'Electronic Voting Machine')">EVM</button>
+  <button onclick="flip(this,'Paper Audit Trail')">VVPAT</button>
+  <button onclick="flip(this,'Model Code of Conduct')">MCC</button>
+  <button onclick="flip(this,'None of the Above')">NOTA</button>
+
 </div>
 
-<div class="card" onclick="flip(this)">
-  <span class="front">EVM</span>
-  <span class="back hidden">Electronic Voting Machine used for voting.</span>
+<!-- QUIZ -->
+<div id="quiz" class="box hidden">
+  <h2>Quiz</h2>
+
+  <p id="question"></p>
+
+  <button id="opt1" onclick="answer('A')"></button>
+  <button id="opt2" onclick="answer('B')"></button>
+  <button id="opt3" onclick="answer('C')"></button>
+
+  <p id="result"></p>
 </div>
 
-<div class="card" onclick="flip(this)">
-  <span class="front">VVPAT</span>
-  <span class="back hidden">Paper slip to verify vote.</span>
+<!-- CHAT -->
+<div id="chat" class="box hidden">
+  <h2>Chat</h2>
+
+  <div id="chatbox"></div>
+
+  <input id="input" placeholder="Ask something">
+  <button onclick="send()">Send</button>
 </div>
 
-<div class="card" onclick="flip(this)">
-  <span class="front">NOTA</span>
-  <span class="back hidden">None Of The Above option.</span>
-</div>
+<script>
 
-<div class="card" onclick="flip(this)">
-  <span class="front">MCC</span>
-  <span class="back hidden">Model Code of Conduct.</span>
-</div>
+// TAB SWITCH
+function showTab(tab){
+  document.getElementById('cards').classList.add('hidden');
+  document.getElementById('quiz').classList.add('hidden');
+  document.getElementById('chat').classList.add('hidden');
 
-<div class="card" onclick="flip(this)">
-  <span class="front">Polling Booth</span>
-  <span class="back hidden">Place where voting happens.</span>
-</div>
+  document.getElementById(tab).classList.remove('hidden');
+}
 
-<div class="card" onclick="flip(this)">
-  <span class="front">Voter ID</span>
-  <span class="back hidden">Identity card for voting.</span>
-</div>
+// FLASHCARD
+function flip(btn,text){
+  btn.innerText = text;
+}
 
-<div class="card" onclick="flip(this)">
-  <span class="front">Returning Officer</span>
-  <span class="back hidden">Conducts election in a constituency.</span>
-</div>
+// QUIZ
+const questions = [
+  {q:"Who conducts elections?", a:"A", options:["ECI","Court","Police"]},
+  {q:"Voting age?", a:"B", options:["16","18","21"]},
+  {q:"EVM full form?", a:"A", options:["Electronic Voting Machine","Election Vote Mode","None"]}
+];
 
-<div class="card" onclick="flip(this)">
-  <span class="front">Ballot</span>
-  <span class="back hidden">Method of casting vote.</span>
-</div>
+let i=0;
 
-<div class="card" onclick="flip(this)">
-  <span class="front">Election Roll</span>
-  <span class="back hidden">List of registered voters.</span>
-</div>
+function loadQ(){
+  document.getElementById("question").innerText = questions[i].q;
+  document.getElementById("opt1").innerText = questions[i].options[0];
+  document.getElementById("opt2").innerText = questions[i].options[1];
+  document.getElementById("opt3").innerText = questions[i].options[2];
+}
+
+function answer(ans){
+  if(ans===questions[i].a){
+    document.getElementById("result").innerText="Correct";
+  } else {
+    document.getElementById("result").innerText="Wrong";
+  }
+  i++;
+  if(i<questions.length) loadQ();
+}
+
+loadQ();
+
+// CHAT
+function send(){
+  let input = document.getElementById("input").value;
+  let chat = document.getElementById("chatbox");
+
+  let reply="";
+
+  if(input.includes("vote")) reply="Register → ID → Vote";
+  else if(input.includes("age")) reply="18+";
+  else reply="Ask about vote, age";
+
+  chat.innerHTML += "<p>You: "+input+"</p>";
+  chat.innerHTML += "<p>Bot: "+reply+"</p>";
+}
+
+</script>
+
+</body>
+</html>
