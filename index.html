@@ -3,32 +3,27 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="AI Smart Election Assistant with Multilingual support">
     <title>Smart Election Assistant</title>
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
-
 <main class="container" role="main">
     <header>
-        <h2 id="title">🗳️ Smart Election Assistant</h2>
-        <div class="language-selector" role="group" aria-label="Language selection">
+        <h2>🗳️ Smart Election Assistant</h2>
+        <div class="language-selector">
             <button onclick="setLanguage('en')" id="btn-en" class="lang-btn active">English</button>
             <button onclick="setLanguage('ta')" id="btn-ta" class="lang-btn">தமிழ்</button>
         </div>
     </header>
-
     <div id="chatBox" role="log" aria-live="polite"></div>
-
-    <div class="input-container">
-        <input type="text" id="userInput" placeholder="Type here / இங்கே தட்டச்சு செய்க..." aria-labelledby="title">
-        <div class="action-buttons">
-            <button onclick="sendMessage()" class="primary-btn">Send / அனுப்பு</button>
-            <button onclick="clearChat()" class="secondary-btn">Clear / அழி</button>
+    <div class="input-area">
+        <input type="text" id="userInput" placeholder="Ask something..." aria-label="user input">
+        <div class="btn-group">
+            <button onclick="sendMessage()" class="send-btn">Send</button>
+            <button onclick="clearChat()" class="clear-btn">Clear</button>
         </div>
     </div>
 </main>
-
 <script src="script.js"></script>
 </body>
 </html>
