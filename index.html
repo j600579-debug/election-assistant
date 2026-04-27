@@ -3,41 +3,30 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="AI powered Smart Election Assistant for voter awareness.">
-    <title>Smart Election Assistant | AI Voter Support</title>
+    <meta name="description" content="AI Smart Election Assistant with Multilingual support">
+    <title>Smart Election Assistant</title>
     <link rel="stylesheet" href="style.css">
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap" rel="stylesheet">
 </head>
 <body>
 
 <main class="container" role="main">
     <header>
-        <h2>🗳️ Smart Election Assistant</h2>
-        <p>வாக்காளர் விழிப்புணர்வு மையம்</p>
+        <h2 id="title">🗳️ Smart Election Assistant</h2>
+        <div class="language-selector" role="group" aria-label="Language selection">
+            <button onclick="setLanguage('en')" id="btn-en" class="lang-btn active">English</button>
+            <button onclick="setLanguage('ta')" id="btn-ta" class="lang-btn">தமிழ்</button>
+        </div>
     </header>
 
-    <div class="language-selector">
-        <button onclick="setLanguage('en')" id="btn-en" class="lang-btn active">English</button>
-        <button onclick="setLanguage('ta')" id="btn-ta" class="lang-btn">தமிழ்</button>
-    </div>
+    <div id="chatBox" role="log" aria-live="polite"></div>
 
-    <section id="chatBox" role="log" aria-live="polite" aria-label="Chat conversation"></section>
-
-    <div class="input-area">
-        <input type="text" id="userInput" 
-               placeholder="Ask / கேள்..." 
-               aria-label="User input"
-               autocomplete="off">
-        
-        <div class="button-group">
-            <button onclick="sendMessage()" id="sendBtn">Send / அனுப்பு</button>
-            <button onclick="clearChat()" id="clearBtn">Clear / அழி</button>
+    <div class="input-container">
+        <input type="text" id="userInput" placeholder="Type here / இங்கே தட்டச்சு செய்க..." aria-labelledby="title">
+        <div class="action-buttons">
+            <button onclick="sendMessage()" class="primary-btn">Send / அனுப்பு</button>
+            <button onclick="clearChat()" class="secondary-btn">Clear / அழி</button>
         </div>
     </div>
-
-    <footer id="google-integration">
-        <small>Powered by Google Gemini AI</small>
-    </footer>
 </main>
 
 <script src="script.js"></script>
