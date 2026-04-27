@@ -1,85 +1,22 @@
 <!DOCTYPE html>
-<html lang="en">
-
+<html>
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Smart Election Assistant</title>
-    <meta name="description"
-        content="An interactive assistant to help you understand the election process, timeline, and voting steps.">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="style.css">
+  <title>Smart Election Assistant</title>
+  <link rel="stylesheet" href="style.css">
 </head>
-
 <body>
-    <div class="app-container">
-        <!-- Sidebar / Info Panel -->
-        <aside class="sidebar">
-            <div class="logo-container">
-                <div class="logo-icon">🗳️</div>
-                <h1>Election Guide</h1>
-            </div>
-            <div class="quick-topics">
-                <h2>Quick Topics</h2>
-                <div class="topic-chips">
-                    <button class="chip" data-query="How do I vote?">How to Vote</button>
-                    <button class="chip" data-query="What is the election timeline?">Timeline</button>
-                    <button class="chip" data-query="What documents do I need?">Documents</button>
-                    <button class="chip" data-query="I am a first time voter">First Time Voter</button>
-                    <button class="chip" data-query="தமிழில் பேசு (Speak in Tamil)">தமிழ் (Tamil)</button>
-                </div>
-            </div>
-            <div class="info-card">
-                <h3>Your Right, Your Voice</h3>
-                <p>Voting is a fundamental right. We are here to make the process easy and transparent for everyone.</p>
-            </div>
-        </aside>
 
-        <!-- Main Chat Area -->
-        <main class="chat-container">
-            <header class="chat-header">
-                <div class="assistant-avatar">
-                    <div class="pulse-ring"></div>
-                    <img src="https://api.dicebear.com/7.x/bottts/svg?seed=electionBot&backgroundColor=4f46e5"
-                        alt="Assistant Avatar">
-                </div>
-                <div class="assistant-info">
-                    <h2>Smart Election Assistant</h2>
-                    <span class="status">Online and ready to help</span>
-                </div>
-            </header>
+<div class="container">
+  <h2>🗳️ Smart Election Assistant</h2>
 
-            <div class="chat-history" id="chat-history">
-                <!-- Initial Welcome Message -->
-                <div class="message assistant-message">
-                    <div class="message-content">
-                        <p>Hello! 👋 I'm your Smart Election Assistant.</p>
-                        <p>I can help you understand the election process, voting steps, timelines, and required
-                            documents. I can also speak Tamil!</p>
-                        <p>How can I help you today?</p>
-                    </div>
-                    <span class="timestamp">Just now</span>
-                </div>
-            </div>
+  <div id="chatBox"></div>
 
-            <div class="chat-input-area">
-                <form id="chat-form">
-                    <input type="text" id="user-input" placeholder="Type your question here (e.g., 'How do I vote?')"
-                        autocomplete="off">
-                    <button type="button" id="send-btn" onclick="sendMessage()">
-                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
-                            stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                            <line x1="22" y1="2" x2="11" y2="13"></line>
-                            <polygon points="22 2 15 22 11 13 2 9 22 2"></polygon>
-                        </svg>
-                    </button>
-                </form>
-            </div>
-        </main>
-    </div>
-    <script src="script.js"></script>
+  <input type="text" id="userInput" placeholder="Ask about voting..." aria-label="User input">
+  
+  <button onclick="sendMessage()">Send</button>
+  <button onclick="clearChat()">Clear</button>
+</div>
+
+<script src="script.js"></script>
 </body>
-
 </html>
