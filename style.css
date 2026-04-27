@@ -1,67 +1,65 @@
-body {
-  margin: 0;
-  font-family: Arial;
-  background: linear-gradient(135deg,#0f2027,#203a43,#2c5364);
-  color: white;
-  text-align: center;
+body{
+    margin:0;
+    font-family: Arial;
+    background: linear-gradient(135deg,#0f2027,#203a43,#2c5364);
+    color:white;
+    text-align:center;
 }
 
-h1 {
-  margin-top: 20px;
-  font-size: 40px;
-  background: linear-gradient(90deg,orange,lightgreen);
-  -webkit-background-clip: text;
-  color: transparent;
+h1{
+    font-size:40px;
+    margin-top:20px;
+    color:orange;
 }
 
-.nav {
-  margin: 20px;
+.nav{
+    display:flex;
+    justify-content:center;
+    gap:10px;
+    margin:20px;
 }
 
-button {
-  padding: 10px 15px;
-  margin: 5px;
-  border: none;
-  border-radius: 8px;
-  background: rgba(255,255,255,0.1);
-  color: white;
-  cursor: pointer;
+.nav button{
+    padding:10px 20px;
+    border:none;
+    border-radius:20px;
+    background:#2c5364;
+    color:white;
+    cursor:pointer;
 }
 
-.section {
-  display: none;
-  padding: 20px;
+.section{
+    display:none;
+    padding:20px;
 }
 
-.active {
-  display: block;
+.active{
+    display:block;
 }
 
-.card-container {
-  display: grid;
-  grid-template-columns: repeat(3,1fr);
-  gap: 15px;
-  padding: 20px;
+.card{
+    background:#1e2a38;
+    padding:20px;
+    margin:10px;
+    border-radius:10px;
+    display:inline-block;
+    width:200px;
+    cursor:pointer;
 }
 
-.card {
-  background: rgba(255,255,255,0.1);
-  padding: 20px;
-  border-radius: 10px;
-  cursor: pointer;
+.chat-box{
+    width:300px;
+    margin:auto;
+    background:#1e2a38;
+    padding:10px;
+    border-radius:10px;
 }
 
-.chat-box {
-  width: 80%;
-  margin: auto;
-  background: black;
-  padding: 10px;
-  border-radius: 10px;
-  height: 200px;
-  overflow-y: auto;
+input{
+    padding:10px;
+    width:70%;
 }
 
-input {
-  padding: 10px;
-  width: 60%;
+button.send{
+    padding:10px;
 }
