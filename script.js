@@ -1,15 +1,11 @@
-// NAVIGATION
 function show(id){
-  document.querySelectorAll('.section').forEach(s=>s.classList.remove('active'));
-  document.getElementById(id).classList.add('active');
+  document.getElementById("quiz").style.display="none";
+  document.getElementById("chat").style.display="none";
+  document.getElementById(id).style.display="block";
 }
 
-// FLASHCARD
-function flip(el,text){
-  el.innerText = text;
-}
+/* QUIZ */
 
-// QUIZ
 let questions = [
   {
     q:"Who conducts elections in India?",
@@ -20,10 +16,15 @@ let questions = [
     q:"Minimum voting age?",
     a:["16","18","21"],
     c:1
+  },
+  {
+    q:"What is EVM?",
+    a:["Machine","Paper","Law"],
+    c:0
   }
 ];
 
-let i=0,score=0;
+let i=0, score=0;
 
 function load(){
   document.getElementById("q").innerText = questions[i].q;
@@ -31,28 +32,41 @@ function load(){
   document.getElementById("a1").innerText = questions[i].a[1];
   document.getElementById("a2").innerText = questions[i].a[2];
 }
-load();
+
+window.onload = load;
 
 function answer(x){
-  if(x==questions[i].c) score++;
+  if(x == questions[i].c){
+    score++;
+  }
+
   i++;
-  if(i<questions.length) load();
-  else document.getElementById("score").innerText="Score: "+score;
+
+  if(i < questions.length){
+    load();
+  } else {
+    document.getElementById("q").innerText = "Finished!";
+    document.getElementById("score").innerText = "Score: " + score;
+  }
 }
 
-// CHATBOT
+/* CHAT */
+
 function send(){
   let input = document.getElementById("input").value;
   let box = document.getElementById("chatbox");
 
-  let reply="";
+  let reply = "";
 
-  if(input.includes("vote"))
-    reply="Go to booth and vote using EVM.";
-  else if(input.includes("age"))
-    reply="Minimum age is 18.";
-  else
-    reply="Try asking vote, age, election.";
+  if(input.includes("vote")){
+    reply = "Go to booth and vote.";
+  }
+  else if(input.includes("age")){
+    reply = "Minimum age is 18.";
+  }
+  else{
+    reply = "Ask about vote or age.";
+  }
 
   box.innerHTML += "<p>You: "+input+"</p>";
   box.innerHTML += "<p>Bot: "+reply+"</p>";
