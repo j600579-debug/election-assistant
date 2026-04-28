@@ -1,179 +1,23 @@
 <!DOCTYPE html>
-<html lang="en">
-
+<html>
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>ElectED – Election Process Education</title>
-  <meta name="description"
-    content="Understand the election process, timelines, and voting steps in an interactive and easy-to-follow way." />
-  <link rel="stylesheet" href="style.css" />
-  <link
-    href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;900&family=DM+Sans:wght@300;400;500;600&display=swap"
-    rel="stylesheet" />
+  <title>Smart Election Assistant</title>
+  <link rel="stylesheet" href="style.css">
 </head>
-
 <body>
 
-  <!-- ===== NAV ===== -->
-  <nav class="nav" id="nav">
-    <div class="nav__logo">Elect<span>ED</span></div>
-    <ul class="nav__links">
-      <li><a href="#about">About</a></li>
-      <li><a href="#timeline">Timeline</a></li>
-      <li><a href="#steps">Steps</a></li>
-      <li><a href="#quiz">Quiz</a></li>
-      <li><a href="#chatbot" class="nav__cta">Ask AI</a></li>
-    </ul>
-    <button class="nav__hamburger" id="hamburger" aria-label="Menu">&#9776;</button>
-  </nav>
+<div class="container">
+  <h2>🗳 Smart Election Assistant</h2>
 
-  <!-- ===== HERO ===== -->
-  <header class="hero" id="about">
-    <div class="hero__bg">
-      <div class="hero__circle hero__circle--1"></div>
-      <div class="hero__circle hero__circle--2"></div>
-      <div class="hero__circle hero__circle--3"></div>
-    </div>
-    <div class="hero__content">
-      <span class="hero__badge">🗳️ Civic Education Platform</span>
-      <h1 class="hero__title">Understand<br /><em>Your Vote.</em></h1>
-      <p class="hero__sub">Master the election process — from voter registration to results — in an interactive,
-        easy-to-follow journey.</p>
-      <div class="hero__actions">
-        <a href="#steps" class="btn btn--primary">Start Learning</a>
-        <a href="#chatbot" class="btn btn--ghost">Ask the AI Assistant →</a>
-      </div>
-      <div class="hero__stats">
-        <div class="stat"><span class="stat__num" data-target="7">0</span><span class="stat__label">Key Steps</span>
-        </div>
-        <div class="stat"><span class="stat__num" data-target="12">0</span><span class="stat__label">Timeline
-            Events</span></div>
-        <div class="stat"><span class="stat__num" data-target="100">0</span><span class="stat__label">% Free</span>
-        </div>
-      </div>
-    </div>
-    <div class="hero__visual">
-      <div class="ballot-card">
-        <div class="ballot-card__header">OFFICIAL BALLOT</div>
-        <div class="ballot-card__options">
-          <div class="ballot-opt selected"><span class="ballot-circle"></span>Candidate A</div>
-          <div class="ballot-opt"><span class="ballot-circle"></span>Candidate B</div>
-          <div class="ballot-opt"><span class="ballot-circle"></span>Candidate C</div>
-        </div>
-        <div class="ballot-card__stamp">✔ VOTE CAST</div>
-      </div>
-    </div>
-  </header>
+  <div id="chat-history" class="chat-box"></div>
 
-  <!-- ===== TIMELINE ===== -->
-  <section class="timeline-section" id="timeline">
-    <div class="container">
-      <div class="section-head">
-        <span class="section-tag">📅 Electoral Calendar</span>
-        <h2>Election Timeline</h2>
-        <p>Every election follows a structured schedule. Here's what happens — and when.</p>
-      </div>
-      <div class="timeline" id="timelineContainer"></div>
-    </div>
-  </section>
+  <input type="text" id="user-input" placeholder="Ask your question..." onkeypress="handleKey(event)">
+  
+  <button onclick="sendMessage()">Send</button>
+  <button onclick="clearChat()">Clear</button>
+</div>
 
-  <!-- ===== STEPS ===== -->
-  <section class="steps-section" id="steps">
-    <div class="container">
-      <div class="section-head">
-        <span class="section-tag">🪜 Step-by-Step Guide</span>
-        <h2>How to Vote</h2>
-        <p>Follow these 7 essential steps to exercise your democratic right.</p>
-      </div>
-      <div class="steps-grid" id="stepsGrid"></div>
-    </div>
-  </section>
+<script src="script.js"></script>
 
-  <!-- ===== INTERACTIVE QUIZ ===== -->
-  <section class="quiz-section" id="quiz">
-    <div class="container">
-      <div class="section-head section-head--light">
-        <span class="section-tag">🧠 Test Yourself</span>
-        <h2>Quick Quiz</h2>
-        <p>See how well you understand the election process!</p>
-      </div>
-      <div class="quiz-card" id="quizCard">
-        <div class="quiz-progress">
-          <div class="quiz-progress__bar" id="quizProgressBar"></div>
-        </div>
-        <div class="quiz-q" id="quizQuestion"></div>
-        <div class="quiz-options" id="quizOptions"></div>
-        <div class="quiz-feedback" id="quizFeedback"></div>
-        <button class="btn btn--primary" id="quizNext" style="display:none;">Next Question →</button>
-        <div class="quiz-result" id="quizResult" style="display:none;"></div>
-      </div>
-    </div>
-  </section>
-
-  <!-- ===== AI CHATBOT ===== -->
-  <section class="chatbot-section" id="chatbot">
-    <div class="container">
-      <div class="section-head">
-        <span class="section-tag">🤖 AI Assistant</span>
-        <h2>Ask About Elections</h2>
-        <p>Have a question about the election process? Ask our AI-powered assistant!</p>
-      </div>
-      <div class="chat-wrapper">
-        <div class="chat-window" id="chatWindow">
-          <div class="chat-msg chat-msg--bot">
-            <div class="chat-avatar">🗳️</div>
-            <div class="chat-bubble">Hello! I'm your Election Education Assistant. Ask me anything about the voting
-              process, registration, timelines, or how elections work!</div>
-          </div>
-        </div>
-        <div class="suggested-questions" id="suggestedQs"></div>
-        <div class="chat-input-area">
-          <input type="text" id="chatInput" class="chat-input" placeholder="E.g. How do I register to vote?" />
-          <button class="btn btn--primary chat-send" id="chatSend">Send</button>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- ===== GLOSSARY ===== -->
-  <section class="glossary-section" id="glossary">
-    <div class="container">
-      <div class="section-head">
-        <span class="section-tag">📖 Key Terms</span>
-        <h2>Election Glossary</h2>
-      </div>
-      <div class="glossary-grid" id="glossaryGrid"></div>
-    </div>
-  </section>
-
-  <!-- ===== FOOTER ===== -->
-  <footer class="footer">
-    <div class="container">
-      <div class="footer__top">
-        <div class="footer__brand">
-          <div class="nav__logo">Elect<span>ED</span></div>
-          <p>Empowering citizens through civic education.</p>
-        </div>
-        <div class="footer__links">
-          <h4>Learn</h4>
-          <a href="#timeline">Election Timeline</a>
-          <a href="#steps">Voting Steps</a>
-          <a href="#quiz">Take the Quiz</a>
-        </div>
-        <div class="footer__links">
-          <h4>Resources</h4>
-          <a href="#chatbot">AI Assistant</a>
-          <a href="#glossary">Glossary</a>
-        </div>
-      </div>
-      <div class="footer__bottom">
-        <p>© 2026 ElectED – Election Process Education. Built for civic empowerment.</p>
-      </div>
-    </div>
-  </footer>
-
-  <script src="script.js"></script>
 </body>
-
 </html>
