@@ -1,37 +1,55 @@
-body {
-  background: linear-gradient(135deg, #0f2027, #203a43, #2c5364);
-  font-family: Arial;
-  color: white;
-  text-align: center;
+/* பழைய பாக்ஸை சேட் பாக்ஸாக மாற்ற */
+.smart-box {
+    width: 350px;
+    background: #1a2332; /* பழைய அதே டார்க் கலர் */
+    border-radius: 12px;
+    padding: 0;
+    overflow: hidden;
+    border: 1px solid #30363d;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.5);
 }
 
-.container {
-  width: 380px;
-  margin: 50px auto;
-  padding: 20px;
-  background: #111827;
-  border-radius: 15px;
-  box-shadow: 0 0 20px rgba(0,0,0,0.5);
+/* சேட் மெசேஜ்கள் தெரியும் பகுதி */
+#chatDisplay {
+    height: 300px;
+    padding: 15px;
+    overflow-y: auto;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    background: #0d1117;
+    text-align: left;
 }
 
-#chatBox {
-  height: 250px;
-  overflow-y: auto;
-  background: black;
-  padding: 10px;
-  margin-bottom: 10px;
-  text-align: left;
+/* பாட் மற்றும் யூசர் மெசேஜ் ஸ்டைல் */
+.msg { padding: 8px 12px; border-radius: 8px; font-size: 14px; max-width: 85%; }
+.bot { background: #21262d; color: #f0f6fc; align-self: flex-start; }
+.user { background: #238636; color: white; align-self: flex-end; }
+
+/* இன்புட் பகுதி */
+.input-group {
+    display: flex;
+    padding: 10px;
+    background: #161b22;
+    border-top: 1px solid #30363d;
 }
 
 input {
-  width: 65%;
-  padding: 8px;
-  border-radius: 5px;
+    flex: 1;
+    background: #0d1117;
+    border: 1px solid #30363d;
+    color: white;
+    padding: 8px;
+    border-radius: 4px;
+    outline: none;
 }
 
 button {
-  padding: 8px;
-  margin: 5px;
-  border-radius: 5px;
-  cursor: pointer;
+    background: #238636;
+    color: white;
+    border: none;
+    padding: 8px 15px;
+    margin-left: 5px;
+    border-radius: 4px;
+    cursor: pointer;
 }
