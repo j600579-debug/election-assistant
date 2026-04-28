@@ -7,17 +7,16 @@
 <body>
 
 <div class="container">
-  <h2>🗳 Smart Election Assistant</h2>
+  <h2>🗳️ Smart Election Assistant</h2>
 
-  <div id="chat-history" class="chat-box"></div>
+  <div id="chatBox"></div>
 
-  <input type="text" id="user-input" placeholder="Ask your question..." onkeypress="handleKey(event)">
+  <input type="text" id="userInput" placeholder="Ask about voting..." aria-label="User input">
   
   <button onclick="sendMessage()">Send</button>
   <button onclick="clearChat()">Clear</button>
 </div>
 
 <script src="script.js"></script>
-
 </body>
 </html>
